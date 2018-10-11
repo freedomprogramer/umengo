@@ -10,7 +10,7 @@ module Umengo
     end
 
     def perform(uri, params)
-      conn = Faraday.new(:url => Umengo::UMENG_HOST) do |faraday|
+      conn = Faraday.new(:url => Umengo::UMENG_HOST, proxy: @proxy) do |faraday|
         faraday.request  :url_encoded
         faraday.response :logger
         faraday.adapter  Faraday.default_adapter
